@@ -47,7 +47,7 @@
         "name": "acr-secret"
       },
 	  "data" : {
-        ".dockerconfigjson" : "eyJhdXRocyI6eyJkb2NrZXJyZWdpc3RyeTIuYXp1cmVjci5pbyI6eyJ1c2VybmFtZSI6IkRvY2tlclJlZ2lzdHJ5MiIsInBhc3N3b3JkIjoidFFVUThVMzBoTFdPeTdTYXFkWHJLL1ZoeCtsNkIwY1AiLCJlbWFpbCI6ImtpcmFuLWt1bWFyLnNAYXRvcy5uZXQiLCJhdXRoIjoiUkc5amEyVnlVbVZuYVhOMGNua3lPblJSVlZFNFZUTXdhRXhYVDNrM1UyRnhaRmh5U3k5V2FIZ3JiRFpDTUdOUSJ9fX0="
+        ".dockerconfigjson" : "eyJkb2NrZXJyZWdpc3RyeTIuYXp1cmVjci5pbyI6eyJ1c2VybmFtZSI6IkRvY2tlclJlZ2lzdHJ5MiIsInBhc3N3b3JkIjoiSmlWYmY4UG9Cd01icXFnU0N6cmE2K1haclRLcjRQbXQiLCJlbWFpbCI6ImtpcmFuLWt1bWFyLnNAYXRvcy5uZXQiLCJhdXRoIjoiUkc5amEyVnlVbVZuYVhOMGNua3lPa3BwVm1KbU9GQnZRbmROWW5GeFoxTkRlbkpoTml0WVduSlVTM0kwVUcxMCJ9fQ=="
       },
 	  "type": "kubernetes.io/dockerconfigjson"
     },
