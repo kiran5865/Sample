@@ -165,10 +165,7 @@
                 "to": {
 		    "kind": "Service",
                     "name": "${APPLICATION_NAME}"
-                },
-	       "port": {
-            		"targetPort": 443
-        	}   
+                } 
             }
         }
     ]
