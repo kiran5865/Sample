@@ -167,7 +167,7 @@
                     "name": "${APPLICATION_NAME}"
                 },
 	       "port": {
-            		"targetPort": "443"
+            		"targetPort": 443
         	}   
             }
         }
