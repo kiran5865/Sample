@@ -41,17 +41,6 @@
       },
 	  "type": "kubernetes.io/tls"
     },{
-      "kind": "Secret",
-      "apiVersion": "v1",
-      "metadata": {
-        "name": "acr-secret"
-      },
-	  "data" : {
-        ".dockerconfigjson" : "eyJkb2NrZXJyZWdpc3RyeTIuYXp1cmVjci5pbyI6eyJ1c2VybmFtZSI6IkRvY2tlclJlZ2lzdHJ5MiIsInBhc3N3b3JkIjoiSmlWYmY4UG9Cd01icXFnU0N6cmE2K1haclRLcjRQbXQiLCJlbWFpbCI6ImtpcmFuLWt1bWFyLnNAYXRvcy5uZXQiLCJhdXRoIjoiUkc5amEyVnlVbVZuYVhOMGNua3lPa3BwVm1KbU9GQnZRbmROWW5GeFoxTkRlbkpoTml0WVduSlVTM0kwVUcxMCJ9fQ=="
-      },
-	  "type": "kubernetes.io/dockerconfigjson"
-    },
-	{
             "kind": "Deployment",
             "apiVersion": "apps/v1beta1",
             "metadata": {
