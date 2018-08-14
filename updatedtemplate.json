@@ -185,6 +185,9 @@
         }
       },
       "spec": {
+        "tls": {
+          "termination": "edge"
+        },
         "host": "${APPLICATION_HOSTNAME}",
         "to": {
           "kind": "Service",
