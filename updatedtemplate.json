@@ -73,11 +73,6 @@
               {
                 "name": "${APPLICATION_NAME}",
                 "image": "${DOCKER_FILE}",
-                 "volumeMounts": {
-                        "name": "tls-secret-volume",
-                        "mountPath": "/etc/tls-secret-volume",
-                         "readOnly": "true"
-                 },
                 "imagePullPolicy": "Always",
                 "env": [
                   {
@@ -103,6 +98,13 @@
                     "name": "http",
                     "containerPort": 8080,
                     "protocol": "TCP"
+                  }
+                ],
+                "volumeMounts": [
+                  {
+                    "name": "tls-secret-volume",
+                    "mountPath": "/etc/tls-secret-volume",
+                    "readOnly": true
                   }
                 ]
               }
