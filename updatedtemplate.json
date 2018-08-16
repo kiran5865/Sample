@@ -141,6 +141,12 @@
     {
       "kind": "Service",
       "apiVersion": "v1",
+      "metadata": {
+              "annotations": {
+                              "service.alpha.openshift.io/serving-cert-secret-name": "tls-secret",
+                               "service.alpha.openshift.io/serving-cert-signed-by": "atos self sign"
+                             }
+      },
       "spec": {
         "type": "ClusterIP",
         "ports": [
