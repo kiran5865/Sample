@@ -91,7 +91,7 @@
                 "ports": [
                   {
                     "name": "https",
-                    "containerPort": 443,
+                    "containerPort": 8443,
                     "protocol": "TCP"
                   },
                   {
