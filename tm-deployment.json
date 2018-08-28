@@ -1,0 +1,61 @@
+{
+  "app-name": "tm",
+  "namespace": "core",
+  "pod-label": [
+    {
+      "appname": "tm"
+    },
+    {
+      "version": "1.0"
+    }
+  ],
+  "pod-replication": "2",
+  "application-port": "8090",
+  "app-image-name": "${infra_docker_repo}/core/tm:2.0",
+  "env": [
+    {
+      "KEYVAULT_CLIENT_ID": "${infra_vault_client_id}"
+    },
+    {
+      "KEYVAULT_CLIENT_KEY": "${infra_vault_client_key}"
+    },
+    {
+      "KEYVAULT_URI": "${infra_keyvault_uri}"
+    },
+    {
+      "CUSTOMCONNSTR_IM_URL": "http://identitymgmnt.core.svc/api/im/v3"
+    },
+    {
+      "CUSTOMCONNSTR_EMDS_URL": "http://emds.core.svc/api/v1"
+    },
+    {
+      "logstash.destination": "${infra_logstash_tcp_uri}"
+    },
+    {
+      "CUSTOMCONNSTR_USER_UAA_URL": "http://core.piam.${mindsphere_base_domain}"
+    },
+    {
+      "RABBIT-MQ-ENDPOINT": "${infra_rabbitmq_host}"
+    },
+    {
+      "CUSTOMCONNSTR_SQL_SERVER_URI": "${infra_mssql_host}"
+    }
+  ],
+  "service-kind": "ClusterIP",
+  "pod-scale-out": [
+    {
+      "cpu": ">70"
+    },
+    {
+      "mem": ">70"
+    }
+  ],
+  "pod-scale-in": [
+    {
+      "cpu": "<30"
+    },
+    {
+      "mem": "<30"
+    }
+  ]
+}
