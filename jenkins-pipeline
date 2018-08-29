@@ -1,0 +1,52 @@
+node {
+    def APP_HOST
+    def APPNAME
+    stage('Login to Openshift') { 
+       sh "oc login -u $USER_NAME -p $SERVER_PWD --server=$OSE_SERVER --insecure-skip-tls-verify"
+   }
+   stage('switching to development project') { 
+       
+			try {
+					sh "oc project $DEVEL_PROJ_NAME"
+				} catch(Exception e) {
+						sh "oc new-project $DEVEL_PROJ_NAME"
+						currentBuild.result = 'SUCCESS'
+						}
+   }
+   stage('Creating objects from template') {
+		 sh "echo $DOCKER_IMAGE | sed -e 's/.*\\///g' > result"
+         APPNAME = readFile('result').trim()
+         println "$APPNAME"
+         APP_HOST = "$APPNAME-$DEVEL_PROJ_NAME.$APPLICATION_HOST"
+		 println "$APP_HOST"
+		 sh "oc create secret docker-registry acr-secret --docker-server=azureprivaterepo.azurecr.io --docker-username=azureprivaterepo --docker-password=vIraudFaDjRc7/LUJGLHDJHua9ukQ3SH --docker-email=kiran-kumar.s@atos.net"
+         sh "oc process -f https://raw.githubusercontent.com/kiran5865/Sample/master/updatedtemplate.json -p APPLICATION_NAME=$APPNAME NAMESPACE=$DEVEL_PROJ_NAME APPLICATION_HOSTNAME=$APP_HOST DOCKER_FILE=$DOCKER_IMAGE | oc create -f -"
+		 sleep(5)
+   }
+    stage('testing for successful deployment') {
+         
+        sh "echo Checking for successful test deployment at $APP_HOST"
+        def rc=1
+        def count=0
+        def attempt=30
+        def status
+		while( rc != 0 && count < attempt){
+		      sh "curl -k -Is --connect-timeout 2 'https://'$APP_HOST | grep HTTP/1.1 | awk {'print \$2}' > status"
+              status = readFile('status').trim()
+              if(status == '200'){
+                 println "Server $APP_HOST Returned with the status code $status"
+                 rc=0
+                 break
+             }
+             count = count + 1
+	 }
+	  if(rc != 0){
+        println "Error hitting URL $APP_HOST"
+      }
+      if(ROUTE_REQ == 'no'){
+        sh "oc delete routes/$APPNAME-route"
+      }
+      
+   }
+}
+
