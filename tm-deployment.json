@@ -11,7 +11,7 @@
   ],
   "pod-replication": "2",
   "application-port": "8090",
-  "app-image-name": "${infra_docker_repo}/core/tm:2.0",
+  "app-image-name": "mdspstkacs.azurecr.io/core/tm:2.0",
   "env": [
     {
       "KEYVAULT_CLIENT_ID": "${infra_vault_client_id}"
